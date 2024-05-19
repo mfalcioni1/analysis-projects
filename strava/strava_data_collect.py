@@ -3,6 +3,9 @@ from dotenv import load_dotenv
 from stravalib.client import Client
 import pandas as pd
 
+# data location
+data_path = os.path.join(os.path.dirname(__file__), 'data/running_activities_header.csv')
+
 # Load credentials from .env file
 load_dotenv()
 ACCESS_TOKEN = os.getenv('STRAVA_ACCESS_TOKEN')
@@ -57,6 +60,6 @@ def fetch_running_activities(client):
 
 # Fetch and store running activities
 df = fetch_running_activities(client)
-df.to_csv('running_activities.csv', index=False)
+df.to_csv(data_path, index=False)
 
-print("Activities fetched and saved to running_activities.csv")
+print("Activities fetched and saved to running_activities_header.csv")
